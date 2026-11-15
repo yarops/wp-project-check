@@ -24,15 +24,11 @@
 <details open>
 <summary><b>Linux, macOS, WSL</b></summary>
 
-Для всех проектов:
-
 ```bash
+# Для всех проектов:
 git clone https://github.com/yarops/wp-project-check.git ~/.claude/skills/wp-project-review
-```
 
-Для одного проекта (из его корня):
-
-```bash
+# Для одного проекта (из его корня):
 git clone https://github.com/yarops/wp-project-check.git .claude/skills/wp-project-review
 ```
 
@@ -41,27 +37,27 @@ git clone https://github.com/yarops/wp-project-check.git .claude/skills/wp-proje
 <details>
 <summary><b>Windows (PowerShell)</b></summary>
 
-Для всех проектов:
-
 ```powershell
+# Для всех проектов:
 git clone https://github.com/yarops/wp-project-check.git "$HOME\.claude\skills\wp-project-review"
-```
 
-Для одного проекта (из его корня):
-
-```powershell
+# Для одного проекта (из его корня):
 git clone https://github.com/yarops/wp-project-check.git ".claude\skills\wp-project-review"
 ```
 
 </details>
 
-Каталог должен называться `wp-project-review`. Обновление — `git pull` в этом каталоге.
+Для других агентов замените `.claude` на их каталог скиллов, например для Codex — `.agents`. Каталог должен называться `wp-project-review`. Обновление — `git pull` в этом каталоге.
 
 ## Использование
 
 В сессии агента, в корне проверяемого проекта:
 
 ```text
+# Codex
+$wp-project-review scope: global, areas: tooling, security, reliability
+
+# Claude Code
 /wp-project-review scope: global, areas: tooling, security, reliability
 ```
 
