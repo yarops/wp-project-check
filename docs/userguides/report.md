@@ -76,10 +76,16 @@
 - ID в тексте — ссылки на находки, точки входа и рекомендации;
 - покрытие свёрнуто, оглавление сбоку, светлая и тёмная тема, печать.
 
-Источник — Markdown. Если вы поправили `.md` или HTML не собрался (например, нет `python3`), соберите его вручную:
+Источник — Markdown. Если вы поправили `.md` или HTML не собрался (например, не нашёлся Python ≥ 3.8), соберите его вручную:
 
 ```bash
 python3 ~/.claude/skills/wp-project-review/scripts/report-html.py docs/reviews/<отчёт>.md
+```
+
+Windows, PowerShell:
+
+```powershell
+py -3 "$HOME\.claude\skills\wp-project-review\scripts\report-html.py" "docs\reviews\<отчёт>.md"
 ```
 
 Путь к скрипту зависит от того, куда установлен скилл.

@@ -9,6 +9,12 @@ git clone https://github.com/yarops/wp-project-check.git ~/projects/wp-project-c
 ln -s ~/projects/wp-project-check ~/.claude/skills/wp-project-review
 ```
 
+В Windows вместо симлинка — junction (симлинк требует Developer Mode):
+
+```powershell
+cmd /c mklink /J "$HOME\.claude\skills\wp-project-review" "$HOME\projects\wp-project-check"
+```
+
 Прогон использует то состояние, которое выгружено в рабочее дерево. Перед прогоном, по которому вы оцениваете версию, закоммитьте правки и проверьте, что дерево чистое: иначе результат нельзя привязать к версии.
 
 ## Почему методику легко испортить
@@ -67,8 +73,8 @@ claude -p "/wp-project-review scope: global, areas: tooling, reliability, securi
 ## Чеклист правки
 
 - Определено, какое существующее правило не сработало и почему.
-- Объём `SKILL.md` + `references/` не вырос (`wc -c SKILL.md references/*.md`).
+- Объём `SKILL.md` + `references/` не вырос (`wc -c SKILL.md references/*.md`; PowerShell: `(Get-ChildItem SKILL.md, references\*.md | Measure-Object Length -Sum).Sum`).
 - В примерах нет дефектов регрессионного кейса.
-- Если менялся шаблон отчёта в `reporting.md`, `scripts/report-html.py` проверен на отчёте нового формата.
+- Если менялся шаблон отчёта в `reporting.md`, `scripts/report-html.py` проверен на отчёте нового формата. Скрипт должен работать на Python 3.8.
 - Если меняется поведение скилла, обновлены [контракт](contract.md) и руководства пользователя.
 - Сообщение коммита: `feat:` / `fix:` / `docs:` и глагол в третьем лице, например `fix: Обобщает REL-CHK-2 на отказ записи`.

@@ -16,6 +16,8 @@
 - запускается ли она в CI;
 - категорию безопасности (см. п. 2).
 
+Вызов можно адаптировать к оболочке без изменения смысла, конфигурации и охвата (в отчёте — исходная и фактическая команда): `php vendor/bin/<tool>` или `composer run-script`. npm-скрипты в Windows идут через `cmd.exe`: Unix-синтаксис — ограничение, не переписывать. Зависимости WSL и Windows не смешивать.
+
 Типовые инструменты WordPress-проекта: PHPCS с WPCS/PHPCompatibility, PHPStan (часто с `szepeviktor/phpstan-wordpress`), Psalm, `php -l`, PHPUnit, `composer validate`, `composer audit`, ESLint/Stylelint (`wp-scripts lint-js`, `lint-style`), `npm audit`, Jest (`wp-scripts test-unit-js`).
 
 ## 2. Допустимые команды

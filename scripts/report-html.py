@@ -2,8 +2,9 @@
 """Преобразует Markdown-отчёт wp-project-review в автономный HTML.
 
 Использование: python3 report-html.py <отчёт.md> [-o <файл.html>]
+(в Windows — также `python` или `py -3`).
 
-Только стандартная библиотека. HTML пишется рядом с отчётом (то же имя,
+Требуется Python >= 3.8, только стандартная библиотека. HTML пишется рядом с отчётом (то же имя,
 расширение .html) и генерируется из Markdown целиком: правки вносятся в .md,
 HTML пересобирается. Разбирается подмножество Markdown, которое задаёт
 references/reporting.md: заголовки, списки, таблицы, блоки кода, `код`,
@@ -629,6 +630,11 @@ PAGE = """<!doctype html>
 
 
 def main(argv: list[str]) -> int:
+    # Вывод в pipe идёт в кодировке локали (в Windows — ANSI): символ пути вне
+    # неё не должен ронять процесс после успешной записи HTML.
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(errors="backslashreplace")
     ap = argparse.ArgumentParser(description="Markdown-отчёт wp-project-review → HTML")
     ap.add_argument("report", type=Path)
     ap.add_argument("-o", "--output", type=Path)
@@ -638,7 +644,7 @@ def main(argv: list[str]) -> int:
         print(f"report-html: файл не найден: {src}", file=sys.stderr)
         return 1
     out = args.output or src.with_suffix(".html")
-    out.write_text(build(src.read_text(encoding="utf-8")), encoding="utf-8")
+    out.write_text(build(src.read_text(encoding="utf-8-sig")), encoding="utf-8")
     print(out)
     return 0
 

@@ -15,7 +15,7 @@
 Нужно:
 
 - агент с поддержкой Agent Skills, например Claude Code;
-- `python3` для HTML-копии отчёта (только стандартная библиотека).
+- Python ≥ 3.8 для HTML-копии отчёта (только стандартная библиотека): `python3`, `python` или `py -3`.
 
 Инструменты проверяемого проекта (`phpcs`, `phpstan`, `composer`, `pnpm` и т. п.) используются, если они в нём установлены.
 
@@ -23,6 +23,12 @@ Claude Code, для всех проектов:
 
 ```bash
 git clone https://github.com/yarops/wp-project-check.git ~/.claude/skills/wp-project-review
+```
+
+Windows, PowerShell:
+
+```powershell
+git clone https://github.com/yarops/wp-project-check.git "$HOME\.claude\skills\wp-project-review"
 ```
 
 Для одного проекта клонируйте в `.claude/skills/wp-project-review` внутри него. Каталог должен называться `wp-project-review`. Обновление — `git pull` в этом каталоге.
@@ -46,6 +52,10 @@ git clone https://github.com/yarops/wp-project-check.git ~/.claude/skills/wp-pro
 
 - `docs/reviews/wp-project-review-<дата>-<время>.md`;
 - рядом — `.html` с тем же именем.
+
+### Windows
+
+Claude Code на Windows выполняет команды через Git Bash, поэтому скилл работает так же, как в Linux. В агентах с PowerShell поиск, инвентаризация и сборка HTML работают, но проектные скрипты с Unix-синтаксисом (например, npm-скрипты с `rm -rf`) могут быть недоступны — это попадёт в ограничения отчёта. Зависимости проекта, установленные в WSL, из нативной Windows не используются, и наоборот. Поддержка Windows пока не подтверждена прогоном на реальной системе.
 
 ## Документация
 
