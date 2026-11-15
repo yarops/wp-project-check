@@ -32,7 +32,7 @@ git clone https://github.com/yarops/wp-project-check.git ~/.claude/skills/wp-pro
 В сессии агента, в корне проверяемого проекта:
 
 ```text
-/wp-project-review scope: diff, base: main, areas: security, reliability
+/wp-project-review scope: global, areas: tooling, security, reliability
 ```
 
 или обычным языком:
