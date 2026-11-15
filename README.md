@@ -19,19 +19,43 @@
 
 Инструменты проверяемого проекта (`phpcs`, `phpstan`, `composer`, `pnpm` и т. п.) используются, если они в нём установлены.
 
-Claude Code, для всех проектов:
+Установка для Claude Code: для всех проектов — в домашний каталог, для одного проекта — в его корень.
+
+<details open>
+<summary><b>Linux, macOS, WSL</b></summary>
+
+Для всех проектов:
 
 ```bash
 git clone https://github.com/yarops/wp-project-check.git ~/.claude/skills/wp-project-review
 ```
 
-Windows, PowerShell:
+Для одного проекта (из его корня):
+
+```bash
+git clone https://github.com/yarops/wp-project-check.git .claude/skills/wp-project-review
+```
+
+</details>
+
+<details>
+<summary><b>Windows (PowerShell)</b></summary>
+
+Для всех проектов:
 
 ```powershell
 git clone https://github.com/yarops/wp-project-check.git "$HOME\.claude\skills\wp-project-review"
 ```
 
-Для одного проекта клонируйте в `.claude/skills/wp-project-review` внутри него. Каталог должен называться `wp-project-review`. Обновление — `git pull` в этом каталоге.
+Для одного проекта (из его корня):
+
+```powershell
+git clone https://github.com/yarops/wp-project-check.git ".claude\skills\wp-project-review"
+```
+
+</details>
+
+Каталог должен называться `wp-project-review`. Обновление — `git pull` в этом каталоге.
 
 ## Использование
 
